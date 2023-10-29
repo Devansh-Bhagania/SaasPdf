@@ -1,8 +1,12 @@
+import Uploadedpdf from '@/app/components/Uploadedpdf'
 import React from 'react'
 
 const DashboardPage = () => {
   return (
-    <div>This is the dashboard!</div>
+    <>
+    <Uploadedpdf/>
+    </>
+
   )
 }
 

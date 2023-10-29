@@ -14,6 +14,7 @@ const Navbar = async () => {
         
         <div className='w-full px-4 py-8 bg-gray-300 flex flex-row items-center gap-4'>
             <Link href='/'>Home</Link>
+            <Link href='/Addpdf'>Add PDF</Link>
             <Link href='/protected/dashboard'>Dashboard</Link>
 
             {session && session.user?.email ? (

@@ -24,7 +24,8 @@ const SignUpForm = () => {
 
             <button onClick={handleSubmit}>Sign up</button>
 
-            <p>{message}</p>
+            
+            
         </div>
     );
 };

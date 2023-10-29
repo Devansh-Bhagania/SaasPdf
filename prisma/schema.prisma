@@ -20,7 +20,7 @@ model User {
 }
 
 model Pdf {
-  id         BigInt      @id @default(autoincrement())
+  id         String      @id @default(cuid())
   title      String
   filePath   String
   isPaid     Boolean
