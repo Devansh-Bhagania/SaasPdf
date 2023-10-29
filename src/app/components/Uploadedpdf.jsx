@@ -2,23 +2,12 @@
 import React, { useEffect , useState } from 'react'
 import axios from 'axios';
 // import { fetchpdf } from '../actions/Fetchpdf/fetchpdf'
-// import deletepdf from '../actions/Deletepdf/deletepdf'
+import deletepdf from '../actions/Deletepdf/deletepdf'
 
 const Uploadedpdf = ()=> {
     const [response, setResponse] = useState([]);
     
-        // const ans = await fetch('/api/fetchpdf');
-  
- 
-        // console.log(response)
-
-
         
-            // const pdfdata = await  fetch('/api/fetchpdf');
-           
-            // // setResponse(pdfdata)
-            //   console.log(pdfdata);
-              
          async  function fetchbutton(){
             const pdfdata = await  axios.get('/api/fetchpdf');
            
@@ -26,8 +15,14 @@ const Uploadedpdf = ()=> {
               console.log(pdfdata.data.message);
           }
 
-    function pushdata(id){
-        console.log(id)
+
+        useEffect(() => {
+            fetchbutton();
+        },[]);
+
+    async function pushdata(id){
+        const reply = await deletepdf(id);
+        console.log(reply);
     }
   return (
     <>
