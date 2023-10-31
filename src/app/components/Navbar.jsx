@@ -12,34 +12,47 @@ const Navbar = async () => {
     // console.log(session.user);
     return (
         <>
-        <div className='w-full px-4 py-8 bg-gray-300 space-between flex flex-row  gap-4'>
+        <header>
+        <nav className=' px-10 p-3 bg-cream justify-between flex flex-row  gap-4 mx-auto'>
             
 
-     
+                <div className='justify-left text-3xl font-medium' >
+                    SaasPDF
+                </div>
 
-               <Link href='/'>Home</Link>
-                <Link href='/Addpdf'>Add PDF</Link>
-                <Link href='/protected/dashboard'>Dashboard</Link>
-                
-            {session && session.user?.email ? (
+
+                <div className='flex flex-row p-auto p-3 font-medium gap-5'>
+                    <div><Link href='/'>Home</Link></div>
+                    <div><Link href='/Addpdf'>Add PDF</Link></div> 
+                    <div> <Link href='/protected/dashboard'>Dashboard</Link></div> 
+
+                    <div>
+                    {session && session.user?.email ? (
                      <>
-                    <Link href='/auth/signout'>Sign out</Link>
+                    <div className='flex  flex-row gap-5'>
+                    <Link href='/auth/signout' className='hover:underline'>Sign out</Link>
                     <p>
-                        <b>Signed in as {session.user?.email}</b>
+                    <b>{session.user?.email}</b>
                     </p>
+                    </div>
                     </>
                      ) : (
                     <>
-                    <Link href='/auth/signin'>Sign in</Link>
-                    <Link href='/auth/signup'>Sign up</Link>
+                    <div className='flex flex-row'>
+                    <Link href='/auth/signin' className='hover:underline'>Sign in</Link>
+                    <Link href='/auth/signup' className='hover:underline'>Sign up</Link>
+                    </div>
                     </>
-            )}
+                    )}
+                    </div>
+                </div>
              
 
             
 
             
-        </div>
+        </nav>
+        </header>
         </>
     );
 };

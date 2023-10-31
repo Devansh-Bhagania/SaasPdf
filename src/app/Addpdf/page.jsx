@@ -52,17 +52,21 @@ function page() {
     <>
     {/* <div>Add pdf page Signed in as {session.user?.email}</div> */}
     {/* <p>{session.user?.name}</p> */}
-    <div className='mx-auto w- full max-w-[600px] flex flex-col gap-5 p-10'>
-       
+    <div className='mx-auto bg-cream w-full flex flex-col gap-5 p-10'>
+            <div className='mx-auto text-3xl font-medium'>
+                Add Your Pdfs
+            </div>
             {/* title of the pdf  */}
+            <div className='max-w-[900px] flex-col flex mx-auto gap-5 p-10'>
             <label htmlFor="title">Title</label>
-            <input type='text' className='shadow-xl border-2 border-black p-3 text-2xl' value={title} onChange={(e) => setTitle(e.target.    value)} />
+            <input type='text' className='shadow-xl outline-none rounded-lg  border-2 border-black p-3 text-2xl' value={title} onChange={(e) => setTitle(e.target.    value)} />
             {/* filepath of the pdf  */}
             <label htmlFor="title">FilePath</label>
-            <input type='text' className='shadow-xl border-2 border-black p-3 text-2xl' value={filePath} onChange={(e) => setFilePath(e.target.value)} />
-            <button className="bg-blue-300 border-2 border-black px-2 py-2 rounded-full" onClick={handleSubmit}>Upload PDF</button>
+            <input type='text' className='shadow-xl rounded-lg outline-none border-2 border-black p-3 text-2xl' value={filePath} onChange={(e) => setFilePath(e.target.value)} />
+            <button className=" max-w-[280px] mx-auto shadow-xl px-5 text-2xl text-white bg-gradient-to-r from-sky-400 to-blue-500 font-medium py-2 rounded-full" onClick={handleSubmit}>Upload PDF</button>
           
             <p>{message}</p>
+            </div>
     </div>
     
     
