@@ -17,6 +17,7 @@ export const GET = async(req, res) => {
         const user = await prisma.user.findUnique({
             where: {
                 email,
+                
             },
         });
     
@@ -24,6 +25,7 @@ export const GET = async(req, res) => {
         const pdffinder= await prisma.pdf.findMany({
             where: {
               userId: user.id,
+              isPaid: false,
             },
           });
     

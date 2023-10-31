@@ -4,7 +4,8 @@ import axios from 'axios';
 // import { fetchpdf } from '../actions/Fetchpdf/fetchpdf'
 import deletepdf from '../actions/Deletepdf/deletepdf'
 import { useRouter } from 'next/navigation'
-import payforpdf from '../actions/payforpdf/payforpdf';
+import payforpdf from '../actions/Payforpdf/payforpdf';
+import Link from 'next/link';
 
 const Uploadedpdf = ()=> {
     const router = useRouter();
@@ -20,6 +21,7 @@ const Uploadedpdf = ()=> {
             console.log("all Paid pdfs are here below");
             console.log(paidpdfdata.data.message);
             setResponse(pdfdata.data.message);
+            console.log("all pdfs are here nel")
             console.log("all pdfs are here below");
               console.log(pdfdata.data.message);
           }
@@ -30,14 +32,26 @@ const Uploadedpdf = ()=> {
         },[]);
 
     async function pushdata(id){
+        alert("Are you sure you want to delete this pdf")
         const reply = await deletepdf(id);
         console.log(reply);
     }
 
-    async function Payforpdf(id){
-        const reply = await payforpdf(id);
-        router.refresh();
-        console.log(reply);
+    async function Payforpdfy(id){
+        console.log(id);
+        console.log("sending id to backend for update in ispaid");
+        const revertfrombackendpay = await axios.post('/api/payforpdf', {
+            data:id,
+          });
+          console.log("getting reply from backend for ispaid update");
+        console.log(revertfrombackendpay.data.message);
+        
+        
+    }
+
+    function download(id){
+        console.log(id);
+        console.log("Your pdf is downloading");
     }
   return (
     <>
@@ -47,8 +61,13 @@ const Uploadedpdf = ()=> {
 
     <div className='flex flex-row gap-5 justify-center'>
         <div className='flex flex-col bg-green-400'>
+            
             <p className='mx-auto text-2xl font-medium'>Uploaded PDFS</p>
+            <div className='flex flex-row mx-auto gap-3'>
+            <button><Link href='/Addpdf' className='mx-auto rounded-lg  bg-blue-600 p-3 text-white text-2xl font-medium'>Add Pdf</Link></button>
+            
             <button className='mx-auto rounded-lg  bg-blue-600 p-3 text-white text-2xl font-medium' onClick={fetchbutton}>Refresh</button>
+            </div>
             <div className=' w-full max-w-[600px] flex flex-col gap-5 p-5'>
             {response.map((pdf) => (
             <div className='flex flex-col gap-4 bg-gray-400 p-4' key={pdf.title}>
@@ -58,7 +77,8 @@ const Uploadedpdf = ()=> {
                     <p>{pdf.id}</p>
                     <div className='flex flex-row'>
                     <button className='mx-auto rounded-lg  bg-blue-600 p-3 text-white text-2xl font-medium' onClick={()=>{pushdata(`${pdf.id}`)}}>delete</button>
-                    <button className='mx-auto rounded-lg  bg-blue-600 p-3 text-white text-2xl font-medium' onClick={()=>{payforpdf(`${pdf.id}`)}}>Pay</button>
+                    <button className='mx-auto rounded-lg  bg-blue-600 p-3 text-white text-2xl font-medium' onClick={()=>{Payforpdfy(`${pdf.id}`)}}>Pay</button>
+                   
                     </div>
                 </div>
             </div>
@@ -81,7 +101,7 @@ const Uploadedpdf = ()=> {
                                 <p className='text-2xl'>{pdf.title}</p>
                                 <p className='text-lg'>{pdf.filePath}</p>
                                 <p>{pdf.id}</p>
-                                <button onClick={() => pushdata(`${pdf.id}`)}>delete</button>
+                                <button className='mx-auto rounded-lg  bg-blue-600 p-3 text-white text-2xl font-medium' onClick={() => download(`${pdf.id}`)}>Download</button>
                             </div>
                         </div>
                     ))
