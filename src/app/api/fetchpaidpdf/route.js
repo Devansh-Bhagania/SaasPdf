@@ -28,7 +28,7 @@ export const GET = async(req, res) => {
             },
           });
     
-        console.log(pdffinder);
+        // console.log(pdffinder);
       return Response.json({ message: pdffinder });
     } catch (err) {
       return Response.json({ error: 'failed to load data' });

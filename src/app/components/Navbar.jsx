@@ -12,8 +12,8 @@ const Navbar = async () => {
     // console.log(session.user);
     return (
         <>
-        <header>
-        <nav className=' px-10 p-3 bg-cream justify-between flex flex-row  gap-4 mx-auto'>
+        <header className='bg-cream'>
+        <nav className=' px-10 p-3 bg-cream justify-between flex flex-row  gap-4 mx-auto w-[1240px]'>
             
 
                 <div className='justify-left text-3xl font-medium' >
