@@ -21,7 +21,7 @@ export default function RootLayout({ children }) {
         {children}
         </Provider>
         </body>
-        <Script src="https://checkout.razorpay.com/v1/checkout.js" />
+        {/* <Script src="https://checkout.razorpay.com/v1/checkout.js" /> */}
     </html>
   )
 }

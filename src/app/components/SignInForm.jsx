@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { signUp } from '../actions/users/signUp';
+// import { signUp } from '../actions/users/signUp';
 import { signIn, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 
@@ -27,6 +27,7 @@ const SignInForm = () => {
 
             if(!signInResponse || signInResponse.ok !== true) {
                 setMessage("Invalid credentials");
+                
             } else {
                 console.log("Sign in successful");
                 console.log(signInResponse)

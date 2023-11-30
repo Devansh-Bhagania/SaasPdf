@@ -6,8 +6,8 @@ const shortid = require("shortid");
 export const POST = async (req, res)=> {
 //   const { taxAmt } = req.body;
 console.log("bjasdfbiluibl")
-const actualdata = await req.json();
-    console.log(actualdata.data)
+// const actualdata = await req.json();
+//     console.log(actualdata.data)
 //   console.log('taxAmt',taxAmt*100)
   if (req.method === "POST") {
     // Initialize razorpay object
